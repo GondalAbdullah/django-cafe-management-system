@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Our Menu</h1>
+
+<form method="get">
+  <label>Filter by category:</label>
+  <select name="category" onchange="this.form.submit()">
+    <option value="">All</option>
+    {% for code, name in categories %}
+      <option value="{{ code }}" {% if request.GET.category == code %}selected{% endif %}>{{ name }}</option>
+    {% endfor %}
+  </select>
+</form>
+
+<ul>
+  {% for item in items %}
+    <li>
+      <a href="{% url 'menu_detail' item.pk %}">
+        <strong>{{ item.name }}</strong> - ${{ item.price }}
+      </a><br>
+      {{ item.description }}
+    </li>
+  {% empty %}
+    <li>No items found.</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

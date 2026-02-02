@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Menu</h2>
+
+<!-- Category filter -->
+<div>
+    <strong>Filter by category:</strong>
+    <a href="{% url 'menu:list' %}">All</a>
+    {% for cat, label in categories %}
+        <a href="{% url 'menu:list' %}?category={{ cat }}">{{ label }}</a>
+    {% endfor %}
+</div>
+
+<hr>
+
+<!-- Menu items -->
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+    {% for item in items %}
+        <div style="border:1px solid #ddd; padding:15px; border-radius:8px;">
+            <h3>{{ item.name }}</h3>
+            <p>{{ item.description }}</p>
+            <strong>{{ item.formatted_price }}</strong>
+            <br><br>
+            <a href="{% url 'menu:detail' item.id %}">View Details</a>
+        </div>
+    {% empty %}
+        <p>No items match this category.</p>
+    {% endfor %}
+</div>
+
+<!-- Pagination -->
+{% if is_paginated %}
+    <div>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Prev</a>
+        {% endif %}
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+{% endif %}
+{% endblock %}

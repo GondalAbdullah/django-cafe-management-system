@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ item.name }}</h2>
+
+<p>{{ item.description }}</p>
+<p><strong>Price:</strong> {{ item.formatted_price }}</p>
+<p><strong>Category:</strong> {{ item.category }}</p>
+
+<a href="/menu/">Back to menu</a>
+{% endblock %}

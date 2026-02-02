@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Checkout</h2>
+
+{% if cart.items %}
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Item</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Subtotal</th>
+        </tr>
+
+        {% for item in cart.items %}
+        <tr>
+            <td>{{ item.name }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>{{ item.price }}</td>
+            <td>{{ item.price|floatformat:2 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+
+    <p><strong>Total before discount:</strong> {{ total }}</p>
+
+    {% if cart.discount_code %}
+        <p><strong>Discount code:</strong> {{ cart.discount_code }}</p>
+        <p><strong>Discount amount:</strong> {{ cart.discount_amount }}</p>
+    {% endif %}
+
+    <p><strong>Total after discount:</strong> {{ total_after }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Place Order</button>
+    </form>
+
+{% else %}
+    <p>Your cart is empty.</p>
+{% endif %}
+
+{% endblock %}

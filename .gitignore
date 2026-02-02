@@ -1,0 +1,91 @@
+# ================================
+# Python
+# ================================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ================================
+# Virtual Environments
+# ================================
+env/
+venv/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ================================
+# Django Stuff
+# ================================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# ================================
+# Environment Variables
+# ================================
+.env
+.env.*
+*.env
+
+# ================================
+# Static files (collectstatic)
+# ================================
+staticfiles/
+
+# ================================
+# Migrations (optional)
+# Uncomment if you want to ignore migrations
+# ================================
+# */migrations/
+# !*/migrations/__init__.py
+
+# ================================
+# IDEs & Editors
+# ================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ================================
+# OS files
+# ================================
+.DS_Store
+Thumbs.db
+
+# ================================
+# Test / Coverage
+# ================================
+.coverage
+htmlcov/
+.pytest_cache/
+
+# ================================
+# Build / Distribution
+# ================================
+build/
+dist/
+*.egg-info/
+
+# ================================
+# Node (if you use frontend tools)
+# ================================
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# ================================
+# Jupyter (if used)
+# ================================
+.ipynb_checkpoints/
+
+# ================================
+# Celery / Redis
+# ================================
+celerybeat-schedule
+celerybeat.pid
+

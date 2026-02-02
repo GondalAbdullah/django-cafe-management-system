@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Order #{{ order.id }}</h2>
+
+<p><strong>Date:</strong> {{ order.order_date }}</p>
+<p><strong>Status:</strong> {{ order.status }}</p>
+
+<hr>
+
+<h3>Items</h3>
+
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Item</th>
+        <th>Qty</th>
+        <th>Price</th>
+        <th>Subtotal</th>
+    </tr>
+
+    {% for item in order.items.all %}
+    <tr>
+        <td>{{ item.name_snapshot }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.price_snapshot }}</td>
+        <td>{{ item.price_snapshot|floatformat:2 }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<hr>
+
+<p><strong>Total before discount:</strong> {{ order.total_before_discount }}</p>
+
+{% if order.discount %}
+    <p><strong>Discount applied:</strong> {{ order.discount.code }}</p>
+    <p><strong>Discount amount:</strong> {{ order.discount_amount }}</p>
+{% endif %}
+
+<p><strong>Total paid:</strong> {{ order.total_after_discount }}</p>
+
+<br>
+<a href="{% url 'orders:history' %}">Back to order history</a>
+
+{% endblock %}
