@@ -1,6 +1,6 @@
 # django cafe-management-system
 
-
+```mermaid
 flowchart TB
 
 %% --------------------
