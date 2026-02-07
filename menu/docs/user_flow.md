@@ -1,5 +1,3 @@
-# django cafe-management-system
-
 flowchart TB
 
 %% --------------------
