@@ -29,7 +29,7 @@ class LoginView(auth_views.LoginView):
 
 
 class LogoutView(auth_views.LogoutView):
-    next_page = reverse_lazy("menu:list")
+    next_page = reverse_lazy("menu:menu_list")
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):

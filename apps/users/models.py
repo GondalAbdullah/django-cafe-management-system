@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
-from django.contrib.auth.models import AbstractUser, BaseUserManager
+from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.base_user import BaseUserManager
 from django.utils import timezone
 
 # Create your models here.
@@ -46,16 +47,16 @@ class User(AbstractUser):
     Keep 'username' for compatibility (optional), but we set USERNAME_FIELD = 'email'.
     """
 
-    username = models.CharField(max_length=150, blank=True, null=True)
+    username = models.CharField(max_length=150, blank=True)
     email = models.EmailField(unique=True)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = ["username"]  # keeping username field for future compatibility
+    REQUIRED_FIELDS = []
 
     objects = UserManager()
 
     def __str__(self):
-        return self.email or f"user-{self.pk}"
+        return self.email
 
 
 class Profile(models.Model):

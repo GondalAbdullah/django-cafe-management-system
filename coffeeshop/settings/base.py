@@ -23,9 +23,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-9hyg^4ic-^6=bg+02_6!^natyi9b)m$^_-)9p7hb^&$!_oeu#('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+
+
+
+# DEBUG = True
+# ALLOWED_HOSTS = []
+
+
 
 
 # Application definition
@@ -37,10 +42,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'menu',
-    'discounts',
-    'orders',
-    'users',
+    'apps.menu',
+    'apps.discounts',
+    'apps.orders',
+    'apps.users',
 ]
 
 MIDDLEWARE = [
@@ -77,12 +82,15 @@ WSGI_APPLICATION = 'coffeeshop.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 
 
 # Password validation
@@ -132,6 +140,6 @@ LOGIN_URL = 'login'
 AUTH_USER_MODEL = 'users.User'
 
 AUTHENTICATION_BACKENDS = [
-    "users.backends.EmailBackend",
+    "apps.users.backends.EmailBackend",
     "django.contrib.auth.backends.ModelBackend",  # keep as fallback
 ]
