@@ -1,7 +1,12 @@
 from django.views.generic import ListView, DetailView
 from .models import MenuItem
+from django.shortcuts import render
 
 # Create your views here.
+
+def landing_page_view(request):
+    return render(request, 'menu/landing_page.html')
+
 
 class MenuListView(ListView):
     model = MenuItem
