@@ -81,13 +81,3 @@ Only one discount can be applied per order.
 ```bash
    python manage.py runserver
 ```
-
-## Notes
-
-- All state-changing endpoints require CSRF tokens and authentication.
-- Discount usage is tracked against `Order` records to enforce `max_uses` and `max_uses_per_customer`.
-- Payment processing is assumed to be handled externally; the app only tracks order status (`pending`, `paid`, `completed`, `canceled`).
-
-## License
-
-MIT
